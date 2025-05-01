@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Plant Project</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="site-header">
+            <div class="container">
+                <div class="logo">
+                    <i class="ri-plant-line"></i>
+                    <h1>Virtual Plant Project</h1>
+                </div>
+                
+                <nav id="main-nav" class="hidden">
+                    <button id="plant-tab-btn" class="nav-btn active">
+                        <i class="ri-plant-line"></i>
+                        <span>My Plant</span>
+                    </button>
+                    <button id="stats-tab-btn" class="nav-btn">
+                        <i class="ri-bar-chart-line"></i>
+                        <span>Stats</span>
+                    </button>
+                    <button id="leaderboard-tab-btn" class="nav-btn">
+                        <i class="ri-trophy-line"></i>
+                        <span>Leaderboard</span>
+                    </button>
+                </nav>
+                
+                <div class="user-actions">
+                    <div id="user-info" class="hidden">
+                        <span id="username-display"></span>
+                        <button id="logout-btn">Logout</button>
+                    </div>
+                    <div id="auth-buttons">
+                        <button id="login-tab-btn" class="active">Login</button>
+                        <span>/</span>
+                        <button id="signup-tab-btn">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Home / Auth Page -->
+            <div id="home-page" class="page active">
+                <div class="container">
+                    <div class="welcome">
+                        <h2>Welcome to The Virtual Plant Project</h2>
+                        <p>Make eco-friendly choices and watch your virtual plant grow! Each decision you make impacts your plant's health.</p>
+                    </div>
+
+                    <div class="auth-card">
+                        <div class="auth-tabs">
+                            <button id="login-tab" class="auth-tab active">Login</button>
+                            <button id="signup-tab" class="auth-tab">Sign Up</button>
+                        </div>
+                        
+                        <form id="login-form" class="auth-form active">
+                            <div class="form-group">
+                                <label for="login-username">Username</label>
+                                <input type="text" id="login-username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="login-password">Password</label>
+                                <input type="password" id="login-password" required>
+                            </div>
+                            <button type="submit" class="btn-primary">Login</button>
+                        </form>
+                        
+                        <form id="signup-form" class="auth-form">
+                            <div class="form-group">
+                                <label for="signup-username">Username</label>
+                                <input type="text" id="signup-username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="signup-password">Password</label>
+                                <input type="password" id="signup-password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirm-password">Confirm Password</label>
+                                <input type="password" id="confirm-password" required>
+                            </div>
+                            <button type="submit" class="btn-primary">Sign Up</button>
+                        </form>
+                    </div>
+
+                    <div class="how-it-works">
+                        <h3>How It Works</h3>
+                        <div class="features">
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="ri-user-add-line"></i>
+                                </div>
+                                <h4>Create an Account</h4>
+                                <p>Sign up to start growing your virtual plant and track your eco-friendly choices.</p>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="ri-leaf-line"></i>
+                                </div>
+                                <h4>Make Eco Choices</h4>
+                                <p>Choose eco-friendly actions to help your plant grow or watch it wilt with harmful choices.</p>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="ri-bar-chart-line"></i>
+                                </div>
+                                <h4>Track Your Progress</h4>
+                                <p>View statistics on your eco-performance and compete with others on the leaderboard.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Page -->
+            <div id="game-page" class="page">
+                <div class="container">
+                    <!-- Plant Tab -->
+                    <div id="plant-tab" class="tab active">
+                        <div class="plant-health">
+                            <i class="ri-heart-pulse-line"></i>
+                            <span>Plant Health: </span>
+                            <span id="plant-health-value">50%</span>
+                        </div>
+
+                        <div class="plant-container">
+                            <div id="plant-visual"></div>
+                        </div>
+
+                        <div class="choices-container">
+                            <h2>Make a Choice</h2>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="good-choice-title">Eco-Friendly Choices</h3>
+                                </div>
+                                <div class="card-content">
+                                    <div class="choice-grid" id="good-choices">
+                                        <!-- Good choices will be inserted here by JS -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="bad-choice-title">Harmful Choices</h3>
+                                </div>
+                                <div class="card-content">
+                                    <div class="choice-grid" id="bad-choices">
+                                        <!-- Bad choices will be inserted here by JS -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="actions-container">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Recent Actions</h3>
+                                </div>
+                                <div class="card-content">
+                                    <div id="action-feed" class="action-feed">
+                                        <div class="no-actions">No actions yet. Make some eco-choices!</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats Tab -->
+                    <div id="stats-tab" class="tab">
+                        <h2>Your Eco Performance</h2>
+
+                        <div class="stats-summary">
+                            <div class="stat-card">
+                                <div class="stat-header">
+                                    <h3>Good Choices</h3>
+                                    <i class="ri-leaf-line"></i>
+                                </div>
+                                <p class="stat-value" id="good-choices-count">0</p>
+                                <p class="stat-description" id="good-choices-percent">0% of total choices</p>
+                            </div>
+
+                            <div class="stat-card">
+                                <div class="stat-header">
+                                    <h3>Bad Choices</h3>
+                                    <i class="ri-close-circle-line"></i>
+                                </div>
+                                <p class="stat-value" id="bad-choices-count">0</p>
+                                <p class="stat-description" id="bad-choices-percent">0% of total choices</p>
+                            </div>
+
+                            <div class="stat-card">
+                                <div class="stat-header">
+                                    <h3>Eco Score</h3>
+                                    <i class="ri-award-line"></i>
+                                </div>
+                                <p class="stat-value" id="eco-score">0%</p>
+                                <p class="stat-description">Based on your choices</p>
+                            </div>
+                        </div>
+
+                        <!-- Data Science Component: Actionable Insights -->
+                        <div class="card insights-card">
+                            <div class="card-header">
+                                <h3><i class="ri-lightbulb-line"></i> AI-Generated Insights</h3>
+                            </div>
+                            <div class="card-content">
+                                <div id="insights-container">
+                                    <div class="insight">
+                                        <i class="ri-information-line"></i>
+                                        <p>Loading personalized insights...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card stat-chart-card">
+                            <div class="card-header">
+                                <h3>Your Eco-Choice Distribution</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="chart-container">
+                                    <canvas id="choices-chart"></canvas>
+                                </div>
+                                <div class="chart-legend">
+                                    <div class="legend-item">
+                                        <div class="legend-color good-legend"></div>
+                                        <span>Good Choices</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color bad-legend"></div>
+                                        <span>Bad Choices</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Data Science Component: Prediction Model -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="ri-line-chart-line"></i> Plant Health Prediction</h3>
+                            </div>
+                            <div class="card-content">
+                                <p class="prediction-explanation">Based on your current choices and behavior patterns, here's a predictive model of your plant's health over the next 7 days:</p>
+                                <div class="chart-container">
+                                    <canvas id="prediction-chart"></canvas>
+                                </div>
+                                <div id="prediction-text" class="prediction-summary">
+                                    <p>At your current rate, your plant health is predicted to <span id="prediction-trend">stay stable</span> over the next week.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Data Science Component: Correlation Analysis -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="ri-bubble-chart-line"></i> Eco Impact Correlation</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="chart-container">
+                                    <canvas id="correlation-chart"></canvas>
+                                </div>
+                                <p class="correlation-insight">This chart shows the correlation between your eco-choices and their environmental impact, calculated using statistical analysis.</p>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Your Top Eco Actions</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="eco-actions">
+                                    <div class="eco-action">
+                                        <div class="action-icon">
+                                            <i class="ri-recycle-line"></i>
+                                        </div>
+                                        <div class="action-details">
+                                            <h4>Recycling</h4>
+                                            <div class="progress-container">
+                                                <div class="progress-bar" id="recycling-progress"></div>
+                                            </div>
+                                        </div>
+                                        <span class="action-percent" id="recycling-percent">0%</span>
+                                    </div>
+
+                                    <div class="eco-action">
+                                        <div class="action-icon">
+                                            <i class="ri-bus-line"></i>
+                                        </div>
+                                        <div class="action-details">
+                                            <h4>Public Transport</h4>
+                                            <div class="progress-container">
+                                                <div class="progress-bar" id="transport-progress"></div>
+                                            </div>
+                                        </div>
+                                        <span class="action-percent" id="transport-percent">0%</span>
+                                    </div>
+
+                                    <div class="eco-action">
+                                        <div class="action-icon">
+                                            <i class="ri-lightbulb-flash-line"></i>
+                                        </div>
+                                        <div class="action-details">
+                                            <h4>Energy Saving</h4>
+                                            <div class="progress-container">
+                                                <div class="progress-bar" id="energy-progress"></div>
+                                            </div>
+                                        </div>
+                                        <span class="action-percent" id="energy-percent">0%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Data Science Component: Personalized Recommendations -->
+                        <div class="card recommendations-card">
+                            <div class="card-header">
+                                <h3><i class="ri-thumb-up-line"></i> Personalized Recommendations</h3>
+                            </div>
+                            <div class="card-content">
+                                <div id="recommendations-container">
+                                    <div class="recommendation">
+                                        <p>Analyzing your behavior patterns to generate personalized recommendations...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Leaderboard Tab -->
+                    <div id="leaderboard-tab" class="tab">
+                        <h2>Eco Champions Leaderboard</h2>
+
+                        <div class="top-users" id="top-users">
+                            <!-- Top 3 users will be inserted here by JS -->
+                        </div>
+
+                        <div class="card leaderboard-card">
+                            <div class="card-header leaderboard-header">
+                                <div class="rank-header">Rank</div>
+                                <div class="user-header">User</div>
+                                <div class="health-header">Plant Health</div>
+                            </div>
+                            <div class="card-content">
+                                <div id="leaderboard-list" class="leaderboard-list">
+                                    <!-- Users will be inserted here by JS -->
+                                    <div class="no-users">No users on the leaderboard yet. Be the first!</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="container">
+                <p>The Virtual Plant Project - Cultivating eco-friendly habits</p>
+                <p>&copy; <span id="current-year"></span> Virtual Plant Project</p>
+            </div>
+        </footer>
+
+        <!-- Toast Messages -->
+        <div id="toast-container" class="toast-container"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
