@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtual Plant Project</title>
+    <title>Virtual Plant Project - Advanced Edition</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -16,7 +16,7 @@
                     <i class="ri-plant-line"></i>
                     <h1>Virtual Plant Project</h1>
                 </div>
-                
+
                 <nav id="main-nav" class="hidden">
                     <button id="plant-tab-btn" class="nav-btn active">
                         <i class="ri-plant-line"></i>
@@ -26,14 +26,30 @@
                         <i class="ri-bar-chart-line"></i>
                         <span>Stats</span>
                     </button>
+                    <button id="achievements-tab-btn" class="nav-btn">
+                        <i class="ri-award-line"></i>
+                        <span>Achievements</span>
+                    </button>
+                    <button id="challenges-tab-btn" class="nav-btn">
+                        <i class="ri-flag-line"></i>
+                        <span>Challenges</span>
+                    </button>
                     <button id="leaderboard-tab-btn" class="nav-btn">
                         <i class="ri-trophy-line"></i>
                         <span>Leaderboard</span>
                     </button>
+                    <button id="friends-tab-btn" class="nav-btn">
+                        <i class="ri-group-line"></i>
+                        <span>Friends</span>
+                    </button>
                 </nav>
-                
+
                 <div class="user-actions">
                     <div id="user-info" class="hidden">
+                        <div class="user-stats">
+                            <span id="user-level">Level 1</span>
+                            <span id="user-xp">0 XP</span>
+                        </div>
                         <span id="username-display"></span>
                         <button id="logout-btn">Logout</button>
                     </div>
@@ -52,7 +68,7 @@
                 <div class="container">
                     <div class="welcome">
                         <h2>Welcome to The Virtual Plant Project</h2>
-                        <p>Make eco-friendly choices and watch your virtual plant grow! Each decision you make impacts your plant's health.</p>
+                        <p>Make eco-friendly choices and watch your virtual plant evolve! Track your progress, earn achievements, complete challenges, and compete with friends.</p>
                     </div>
 
                     <div class="auth-card">
@@ -60,11 +76,11 @@
                             <button id="login-tab" class="auth-tab active">Login</button>
                             <button id="signup-tab" class="auth-tab">Sign Up</button>
                         </div>
-                        
+
                         <form id="login-form" class="auth-form active">
                             <div class="form-group">
-                                <label for="login-username">Username</label>
-                                <input type="text" id="login-username" required>
+                                <label for="login-username">Email</label>
+                                <input type="email" id="login-username" required>
                             </div>
                             <div class="form-group">
                                 <label for="login-password">Password</label>
@@ -72,11 +88,15 @@
                             </div>
                             <button type="submit" class="btn-primary">Login</button>
                         </form>
-                        
+
                         <form id="signup-form" class="auth-form">
                             <div class="form-group">
                                 <label for="signup-username">Username</label>
                                 <input type="text" id="signup-username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="signup-email">Email</label>
+                                <input type="email" id="signup-email" required>
                             </div>
                             <div class="form-group">
                                 <label for="signup-password">Password</label>
@@ -91,28 +111,49 @@
                     </div>
 
                     <div class="how-it-works">
-                        <h3>How It Works</h3>
+                        <h3>Advanced Features</h3>
                         <div class="features">
                             <div class="feature">
                                 <div class="feature-icon">
-                                    <i class="ri-user-add-line"></i>
+                                    <i class="ri-award-line"></i>
                                 </div>
-                                <h4>Create an Account</h4>
-                                <p>Sign up to start growing your virtual plant and track your eco-friendly choices.</p>
+                                <h4>Achievements & Badges</h4>
+                                <p>Unlock achievements and earn badges as you make eco-friendly choices.</p>
                             </div>
                             <div class="feature">
                                 <div class="feature-icon">
-                                    <i class="ri-leaf-line"></i>
+                                    <i class="ri-flag-line"></i>
                                 </div>
-                                <h4>Make Eco Choices</h4>
-                                <p>Choose eco-friendly actions to help your plant grow or watch it wilt with harmful choices.</p>
+                                <h4>Daily Challenges</h4>
+                                <p>Complete daily, weekly, and monthly challenges to earn bonus XP.</p>
                             </div>
                             <div class="feature">
                                 <div class="feature-icon">
-                                    <i class="ri-bar-chart-line"></i>
+                                    <i class="ri-seedling-line"></i>
                                 </div>
-                                <h4>Track Your Progress</h4>
-                                <p>View statistics on your eco-performance and compete with others on the leaderboard.</p>
+                                <h4>Plant Evolution</h4>
+                                <p>Watch your plant evolve through 5 stages as you level up and improve.</p>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="ri-group-line"></i>
+                                </div>
+                                <h4>Social Features</h4>
+                                <p>Add friends, compare progress, and see real-time updates on the leaderboard.</p>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="ri-line-chart-line"></i>
+                                </div>
+                                <h4>Advanced Analytics</h4>
+                                <p>Track your eco-performance with detailed statistics and visualizations.</p>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="ri-fire-line"></i>
+                                </div>
+                                <h4>Streak System</h4>
+                                <p>Maintain daily streaks to unlock special rewards and achievements.</p>
                             </div>
                         </div>
                     </div>
@@ -142,9 +183,7 @@
                                     <h3 class="good-choice-title">Eco-Friendly Choices</h3>
                                 </div>
                                 <div class="card-content">
-                                    <div class="choice-grid" id="good-choices">
-                                        <!-- Good choices will be inserted here by JS -->
-                                    </div>
+                                    <div class="choice-grid" id="good-choices"></div>
                                 </div>
                             </div>
 
@@ -153,9 +192,7 @@
                                     <h3 class="bad-choice-title">Harmful Choices</h3>
                                 </div>
                                 <div class="card-content">
-                                    <div class="choice-grid" id="bad-choices">
-                                        <!-- Bad choices will be inserted here by JS -->
-                                    </div>
+                                    <div class="choice-grid" id="bad-choices"></div>
                                 </div>
                             </div>
                         </div>
@@ -185,7 +222,7 @@
                                     <i class="ri-leaf-line"></i>
                                 </div>
                                 <p class="stat-value" id="good-choices-count">0</p>
-                                <p class="stat-description" id="good-choices-percent">0% of total choices</p>
+                                <p class="stat-description" id="good-choices-percent">0% of total</p>
                             </div>
 
                             <div class="stat-card">
@@ -194,7 +231,7 @@
                                     <i class="ri-close-circle-line"></i>
                                 </div>
                                 <p class="stat-value" id="bad-choices-count">0</p>
-                                <p class="stat-description" id="bad-choices-percent">0% of total choices</p>
+                                <p class="stat-description" id="bad-choices-percent">0% of total</p>
                             </div>
 
                             <div class="stat-card">
@@ -207,22 +244,7 @@
                             </div>
                         </div>
 
-                        <!-- Data Science Component: Actionable Insights -->
-                        <div class="card insights-card">
-                            <div class="card-header">
-                                <h3><i class="ri-lightbulb-line"></i> AI-Generated Insights</h3>
-                            </div>
-                            <div class="card-content">
-                                <div id="insights-container">
-                                    <div class="insight">
-                                        <i class="ri-information-line"></i>
-                                        <p>Loading personalized insights...</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card stat-chart-card">
+                        <div class="card">
                             <div class="card-header">
                                 <h3>Your Eco-Choice Distribution</h3>
                             </div>
@@ -230,45 +252,6 @@
                                 <div class="chart-container">
                                     <canvas id="choices-chart"></canvas>
                                 </div>
-                                <div class="chart-legend">
-                                    <div class="legend-item">
-                                        <div class="legend-color good-legend"></div>
-                                        <span>Good Choices</span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <div class="legend-color bad-legend"></div>
-                                        <span>Bad Choices</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Data Science Component: Prediction Model -->
-                        <div class="card">
-                            <div class="card-header">
-                                <h3><i class="ri-line-chart-line"></i> Plant Health Prediction</h3>
-                            </div>
-                            <div class="card-content">
-                                <p class="prediction-explanation">Based on your current choices and behavior patterns, here's a predictive model of your plant's health over the next 7 days:</p>
-                                <div class="chart-container">
-                                    <canvas id="prediction-chart"></canvas>
-                                </div>
-                                <div id="prediction-text" class="prediction-summary">
-                                    <p>At your current rate, your plant health is predicted to <span id="prediction-trend">stay stable</span> over the next week.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Data Science Component: Correlation Analysis -->
-                        <div class="card">
-                            <div class="card-header">
-                                <h3><i class="ri-bubble-chart-line"></i> Eco Impact Correlation</h3>
-                            </div>
-                            <div class="card-content">
-                                <div class="chart-container">
-                                    <canvas id="correlation-chart"></canvas>
-                                </div>
-                                <p class="correlation-insight">This chart shows the correlation between your eco-choices and their environmental impact, calculated using statistical analysis.</p>
                             </div>
                         </div>
 
@@ -319,19 +302,21 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Data Science Component: Personalized Recommendations -->
-                        <div class="card recommendations-card">
-                            <div class="card-header">
-                                <h3><i class="ri-thumb-up-line"></i> Personalized Recommendations</h3>
-                            </div>
-                            <div class="card-content">
-                                <div id="recommendations-container">
-                                    <div class="recommendation">
-                                        <p>Analyzing your behavior patterns to generate personalized recommendations...</p>
-                                    </div>
-                                </div>
-                            </div>
+                    <!-- Achievements Tab -->
+                    <div id="achievements-tab" class="tab">
+                        <h2>Achievements</h2>
+                        <div id="achievements-list" class="achievements-list">
+                            <div class="no-achievements">No achievements yet. Keep making eco-friendly choices!</div>
+                        </div>
+                    </div>
+
+                    <!-- Challenges Tab -->
+                    <div id="challenges-tab" class="tab">
+                        <h2>Active Challenges</h2>
+                        <div id="challenges-list" class="challenges-list">
+                            <div class="no-challenges">Loading challenges...</div>
                         </div>
                     </div>
 
@@ -339,9 +324,7 @@
                     <div id="leaderboard-tab" class="tab">
                         <h2>Eco Champions Leaderboard</h2>
 
-                        <div class="top-users" id="top-users">
-                            <!-- Top 3 users will be inserted here by JS -->
-                        </div>
+                        <div class="top-users" id="top-users"></div>
 
                         <div class="card leaderboard-card">
                             <div class="card-header leaderboard-header">
@@ -351,10 +334,17 @@
                             </div>
                             <div class="card-content">
                                 <div id="leaderboard-list" class="leaderboard-list">
-                                    <!-- Users will be inserted here by JS -->
-                                    <div class="no-users">No users on the leaderboard yet. Be the first!</div>
+                                    <div class="no-users">Loading leaderboard...</div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Friends Tab -->
+                    <div id="friends-tab" class="tab">
+                        <h2>Friends</h2>
+                        <div id="friends-list" class="friends-list">
+                            <div class="no-friends">No friends yet. Add some friends to compete!</div>
                         </div>
                     </div>
                 </div>
@@ -364,7 +354,7 @@
         <!-- Footer -->
         <footer class="site-footer">
             <div class="container">
-                <p>The Virtual Plant Project - Cultivating eco-friendly habits</p>
+                <p>Virtual Plant Project - Advanced Edition</p>
                 <p>&copy; <span id="current-year"></span> Virtual Plant Project</p>
             </div>
         </footer>
@@ -373,7 +363,6 @@
         <div id="toast-container" class="toast-container"></div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="module" src="script.js"></script>
+    <script type="module" src="app.js"></script>
 </body>
 </html>
